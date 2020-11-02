@@ -1,0 +1,5 @@
+= simple_form_for @package do |f|
+  = f.input :size
+  = f.input :info
+  = f.input :order_id, collection: @orders_list
+  = f.button :submit, class: 'btn btn-primary'

@@ -1,0 +1,29 @@
+.orders-container
+  .bnt
+    = link_to 'Create order', new_order_path, class: 'btn btn-info'
+
+  table
+    thead
+      tr
+        th Id
+        th Title
+        th Customer Info
+        th Order Info
+        th Created at
+    tbody
+    - @orders.each do |order|
+      tr
+        th
+          = order.id
+        th
+          = order.title
+        th
+          = order.customer_info
+        th
+          = order.order_info
+        th
+          = order.created_at
+        th
+          = link_to 'Edit', edit_order_path(order), class: 'btn btn-primary'
+        th
+          = link_to 'Delete', order_path(order), method: :delete, class: 'btn btn-danger'

@@ -1,0 +1,4 @@
+.qr-codes-container
+ = form_for(:qr_code, url: scan_path) do |f|
+  = f.file_field :link
+  = f.submit 'Add file'

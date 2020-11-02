@@ -1,0 +1,31 @@
+.packages-container
+  .bnt
+    = link_to 'Create package', new_package_path, class: 'btn btn-info'
+
+  table
+    thead
+      tr
+        th Id
+        th Order ID
+        th Size
+        th Info
+        th Created at
+    tbody
+    - @packages.each do |package|
+      tr
+        th
+          = package.id
+        th
+          = package.order_id
+        th
+          = package.size
+        th
+          = package.info
+        th
+          = package.created_at
+        th
+          = link_to 'Show', package_path(package), class: 'btn btn-info'
+        th
+          = link_to 'Edit', edit_package_path(package), class: 'btn btn-primary'
+        th
+          = link_to 'Delete', package_path(package), method: :delete, class: 'btn btn-danger'
