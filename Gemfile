@@ -20,6 +20,10 @@ gem 'bootstrap', '~> 5.0.0.alpha1'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'rqrcode'
+gem 'aws-sdk-s3', '~> 1'
+gem 'image_processing'
+gem "cocoon"
+gem 'rails-i18n', '~> 6.0.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

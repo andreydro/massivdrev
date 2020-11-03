@@ -1,0 +1,12 @@
+ru:
+  simple_form:
+    labels:
+      order:
+        title: 'Заголовок'
+        customer_info: 'Информация о заказчике'
+        order_info: 'Информация о заказе'
+      package:
+        size: 'Размер'
+        info: 'Информация о паллете'
+        order_id: 'Заказ'
+        order: 'Заказ'

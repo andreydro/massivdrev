@@ -1,9 +1,9 @@
 .header
-  .header-title Massivdrev
+  .header-title = I18n.t('massivdrev')
   .nav
-    .qr-codes
-      = link_to 'QR code', qr_codes_path
-    .orders
-      = link_to 'Orders', orders_path
-    .packages
-      = link_to 'Packages', packages_path
+    .qr-codes.nav-blocks
+      = link_to I18n.t('qr_codes.main_title'), qr_codes_path, class: 'btn btn-light'
+    .orders.nav-blocks
+      = link_to I18n.t('orders.main_title'), orders_path, class: 'btn btn-light'
+    .packages.nav-blocks
+      = link_to I18n.t('packages.main_title'), packages_path, class: 'btn btn-light'

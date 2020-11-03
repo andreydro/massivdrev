@@ -1,13 +1,30 @@
-/ - binding.pry
-div
-  = @package.id
-div
-  = @package.size
-div
-  = @package.info
-div
-  = Order.find(@package.order_id).title
-div
-  = image_tag "#{Rails.root}/public/qr_codes/qr-code-for-package-#{@package.id}.png"
-  / = image_tag 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F62%2FRuby_On_Rails_Logo.svg%2F1280px-Ruby_On_Rails_Logo.svg.png&imgrefurl=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ARuby_On_Rails_Logo.svg&tbnid=CyKXD7uZxv3gSM&vet=12ahUKEwi86Lf-z-TsAhUGxyoKHaO0DaoQMygBegUIARDTAQ..i&docid=pOF1f9Viu_C-DM&w=1280&h=483&q=rails%20image&ved=2ahUKEwi86Lf-z-TsAhUGxyoKHaO0DaoQMygBegUIARDTAQ', height: '100', width: '100'
+.form_container
+  div.form-group
+    .field-label.control-label
+      = I18n.t('packages.id')
+    .field.form-control
+      = @package.id
+  div.form-group
+    .field-label.control-label
+      = I18n.t('packages.size')
+    .field.form-control
+      = @package.size
+  div.form-group
+    .field-label
+      = I18n.t('packages.info')
+    .field.form-control
+      = @package.info
+  div.form-group
+    .field-label
+      = I18n.t('packages.order')
+    .field.form-control
+      = Order.find(@package.order_id).title
+  div.form-group
+    .field-label
+      = I18n.t('packages.qr_code')
+    .field
+      / = image_tag url_for(@package.qr_code.image)
+      / = image_tag Rails.application.routes.url_helpers.rails_blob_url(@package.qr_code.image, only_path: true)
+      = image_tag @package.qr_code.public_image_url
+      / = image_tag 'https://massivdrev1.s3.eu-central-1.amazonaws.com/v24bovkkkf5jetbso9x2o3dk5al2'
 

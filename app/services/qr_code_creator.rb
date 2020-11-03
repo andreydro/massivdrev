@@ -5,40 +5,25 @@ class QrCodeCreator
   end
 
   def call
-    qr_code = QrCode.new(code: qr_code_string, package_id: @package.id)
+    qr_code = QrCode.new(package_id: @package.id)
 
-    if qr_code.save
-      create_temp_file
-      true
-    else
-      false
-    end
+    qr_code.save && attach_blob(qr_code)
   end
 
   private
 
-  def qr_code_string
-    result = ''
+  def attach_blob(qr_code)
+    blob = ActiveStorage::Blob.create_after_upload!(
+      io: StringIO.new((Base64.decode64(png.to_data_url))),
+      filename: "#{@host}/packages/#{@package.id}.png",
+      content_type: 'image/png'
+    )
 
-    qr_code_object.qrcode.modules.each do |row|
-      row.each do |col|
-        result << (col ? 'X' : 'O')
-      end
-
-      result << "\n"
-    end
-
-    result
+    qr_code.image.attach(blob)
   end
 
   def qr_code_object
-    @qr_code_object ||= RQRCode::QRCode.new("#{@host}/pachages/#{@package.id}")
-  end
-
-  def create_temp_file
-    File.open("public/qr_codes/qr-code-for-package-#{@package.id}.png", 'wb') do |output|
-      output.write png
-    end
+    @qr_code_object ||= RQRCode::QRCode.new("#{@host}/packages/#{@package.id}")
   end
 
   def png

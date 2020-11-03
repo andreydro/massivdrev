@@ -10,11 +10,15 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def create
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to orders_path, notice: 'Order created'
+      redirect_to orders_path, notice: I18n.t('orders.created')
     else
       render 'new'
     end
@@ -28,7 +32,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update_attributes(order_params)
-      redirect_to orders_path, notice: 'Order updated'
+      redirect_to orders_path, notice: I18n.t('orders.updated')
     else
       render 'edit'
     end
@@ -38,15 +42,16 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.destroy
-      redirect_to orders_path, notice: 'Order deleted'
+      redirect_to orders_path, notice: I18n.t('orders.deleted')
     else
-      redirect_to orders_path, notice: 'Order not deleted'
+      redirect_to orders_path, notice: I18n.t('orders.is_not_deleted')
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:title, :customer_info, :order_info)
+    params.require(:order).permit(:title, :customer_info, :order_info,
+                                  packages_attributes: %i[id size info order_id _destroy])
   end
 end

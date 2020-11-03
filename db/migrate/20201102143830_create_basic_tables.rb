@@ -10,7 +10,6 @@ class CreateBasicTables < ActiveRecord::Migration[6.0]
 
     create_table :qr_codes do |t|
       t.belongs_to :package
-      t.string :code
 
       t.timestamps null: false
     end

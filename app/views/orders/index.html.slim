@@ -1,15 +1,15 @@
 .orders-container
-  .bnt
-    = link_to 'Create order', new_order_path, class: 'btn btn-info'
+  .creation-bnt
+    = link_to I18n.t('orders.create'), new_order_path, class: 'btn btn-info'
 
-  table
+  table.table
     thead
       tr
-        th Id
-        th Title
-        th Customer Info
-        th Order Info
-        th Created at
+        th = I18n.t('orders.id')
+        th = I18n.t('orders.title')
+        th = I18n.t('orders.customer_info')
+        th = I18n.t('orders.order_info')
+        th = I18n.t('orders.created_at')
     tbody
     - @orders.each do |order|
       tr
@@ -22,8 +22,8 @@
         th
           = order.order_info
         th
-          = order.created_at
+          = order.created_at.strftime("%F %T")
         th
-          = link_to 'Edit', edit_order_path(order), class: 'btn btn-primary'
+          = link_to I18n.t('buttons.edit'), edit_order_path(order), class: 'btn btn-primary'
         th
-          = link_to 'Delete', order_path(order), method: :delete, class: 'btn btn-danger'
+          = link_to I18n.t('buttons.delete'), order_path(order), method: :delete, class: 'btn btn-danger'

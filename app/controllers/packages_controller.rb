@@ -8,23 +8,6 @@ class PackagesController < ApplicationController
 
   def show
     @package = Package.find(params[:id])
-
-    qrcode = RQRCode::QRCode.new("#{request.host}/pachages/#{@package.id}")
-
-    png = qrcode.as_png(
-      bit_depth: 1,
-      border_modules: 4,
-      color_mode: ChunkyPNG::COLOR_GRAYSCALE,
-      color: 'black',
-      file: nil,
-      fill: 'white',
-      module_px_size: 6,
-      resize_exactly_to: false,
-      resize_gte_to: false,
-      size: 120
-    )
-
-    @qr_code_url = IO.binwrite("/tmp/package-#{@package.id}-qr-code.png", png.to_s)
   end
 
   def new
@@ -36,9 +19,9 @@ class PackagesController < ApplicationController
     @package = Package.new(package_params)
 
     if @package.save && create_qr_code(@package)
-      redirect_to packages_path, notice: 'package created'
+      redirect_to packages_path, notice: I18n.t('packages.created')
     else
-      flash.error = 'Package is not created'
+      # flash[:error] = I18n.t('packages.is_not_created')
       render 'new'
     end
   end
@@ -51,7 +34,7 @@ class PackagesController < ApplicationController
     @package = Package.find(params[:id])
 
     if @package.update_attributes(package_params)
-      redirect_to packages_path, notice: 'package updated'
+      redirect_to packages_path, notice: I18n.t('packages.updated')
     else
       render 'edit'
     end
@@ -61,9 +44,9 @@ class PackagesController < ApplicationController
     @package = Package.find(params[:id])
 
     if @package.destroy
-      redirect_to packages_path, notice: 'package deleted'
+      redirect_to packages_path, notice: I18n.t('packages.deleted')
     else
-      redirect_to packages_path, notice: 'package not deleted'
+      redirect_to packages_path, notice: I18n.t('packages.is_not_deleted')
     end
   end
 

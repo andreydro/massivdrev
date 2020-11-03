@@ -1,5 +1,13 @@
-= simple_form_for @order do |f|
-  = f.input :title
-  = f.input :customer_info
-  = f.input :order_info
-  = f.button :submit, class: 'btn btn-primary'
+.form_container
+  = simple_form_for @order do |f|
+    = f.input :title
+    = f.input :customer_info
+    = f.input :order_info
+    / = f.simple_fields_for :packages do |package|
+    /   = render partial: 'orders/package_fields', f: package
+    / = link_to_add_association 'Add package', f, :packages, id: 'add-package-btn'
+    / = f.simple_fields_for :packages do |package|
+    /   = render partial: 'orders/packages_fields', f: package
+    / = link_to_add_fields 'Add package', f, :packages
+
+    = f.button :submit, I18n.t('orders.create'), class: 'btn btn-primary submit-button'
