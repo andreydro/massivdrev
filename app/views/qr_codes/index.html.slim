@@ -1,4 +1,6 @@
 .qr-codes-container
- = form_for(:qr_code, url: scan_path) do |f|
-  = f.file_field :link
-  = f.submit 'Add file'
+  .quote
+    = I18n.t('qr_codes.quote')
+  = form_for(:qr_code, url: scan_path) do |f|
+    = f.file_field :link
+    = f.submit 'Загрузить файл'

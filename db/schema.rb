@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_153523) do
+ActiveRecord::Schema.define(version: 2020_11_04_194238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_153523) do
     t.bigint "package_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "base64_string"
     t.index ["package_id"], name: "index_qr_codes_on_package_id"
   end
 
