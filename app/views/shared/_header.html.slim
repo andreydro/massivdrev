@@ -7,3 +7,8 @@
       = link_to I18n.t('orders.main_title'), orders_path, class: 'btn btn-light'
     .packages.nav-blocks
       = link_to I18n.t('packages.main_title'), packages_path, class: 'btn btn-light'
+    - if user_superadmin?
+      .users.nav-blocks
+        = link_to I18n.t('users.main_title'), users_path, class: 'btn btn-light'
+    .logout-bnt.nav-blocks
+      = link_to I18n.t('buttons.log_out'), destroy_user_session_path, method: :delete, class: 'btn btn-dark'

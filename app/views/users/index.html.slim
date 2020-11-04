@@ -1,0 +1,25 @@
+.orders-container
+  .creation-bnt
+    = link_to I18n.t('users.create'), new_user_path, class: 'btn btn-info'
+
+  table.table
+    thead
+      tr
+        th = I18n.t('users.email')
+        th = I18n.t('users.role')
+        th = I18n.t('users.created_at')
+    tbody
+    - @users.each do |user|
+      tr
+        th
+          = user.email
+        th
+          = user.role
+        th
+          = user.created_at.strftime("%F %T")
+        th
+          = link_to I18n.t('buttons.show'), user_path(user), class: 'btn btn-info'
+        th
+          = link_to I18n.t('buttons.edit'), edit_user_path(user), class: 'btn btn-primary'
+        th
+          = link_to I18n.t('buttons.delete'), user_path(user), method: :delete, class: 'btn btn-danger'

@@ -24,6 +24,8 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'image_processing'
 gem "cocoon"
 gem 'rails-i18n', '~> 6.0.0'
+gem 'devise'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

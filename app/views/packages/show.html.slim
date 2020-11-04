@@ -16,6 +16,11 @@
       = @package.info
   div.form-group
     .field-label
+      = I18n.t('packages.status')
+    .field.form-control
+      = package_statuses_ru[@package.status.to_sym]
+  div.form-group
+    .field-label
       = I18n.t('packages.order')
     .field.form-control
       = Order.find(@package.order_id).title
@@ -23,8 +28,6 @@
     .field-label
       = I18n.t('packages.qr_code')
     .field
-      / = image_tag url_for(@package.qr_code.image)
-      / = image_tag Rails.application.routes.url_helpers.rails_blob_url(@package.qr_code.image, only_path: true)
       = image_tag @package.qr_code.public_image_url
-      / = image_tag 'https://massivdrev1.s3.eu-central-1.amazonaws.com/v24bovkkkf5jetbso9x2o3dk5al2'
+      = link_to @package.qr_code.image.filename, rails_blob_path(@package.qr_code.image, disposition: 'attachment')
 

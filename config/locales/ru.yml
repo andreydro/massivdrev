@@ -4,6 +4,11 @@ ru:
     show: 'Показать'
     edit: 'Редактировать'
     delete: 'Удалить'
+    log_in: 'Войти'
+    log_out: 'Выйти из системы'
+    remember_me: 'Запомнить меня'
+    previous_label: 'Предыдущая страница'
+    next_label: 'Следующая страница'
   packages:
     main_title: 'Паллеты'
     create: 'Создать паллет'
@@ -11,9 +16,10 @@ ru:
     order_id: 'Номер заказа'
     size: 'Размер'
     info: 'Информация'
+    status: 'Статус'
     created_at: 'Дата создания'
     order: 'Заказ'
-    qr_code: 'Qr код'
+    qr_code: 'Ссылка на загрузку QR кода'
     created: 'Паллет создан успешно!'
     is_not_created: 'Возникла ошибка при создании паллета!'
     updated: 'Паллет успешно обновлен!'
@@ -33,4 +39,25 @@ ru:
     is_not_deleted: 'Возникла ошибка при удалении заказа'
   qr_codes:
     main_title: 'QR коды'
+  users:
+    main_title: 'Пользователи'
+    create: 'Создать пользователя'
+    update: 'Обновить пользователя'
+    email: 'Электронная почта'
+    role: 'Роль'
+    created_at: 'Дата создания'
+    password: 'Пароль'
+    password_encrypted: 'Пароль хранится в зашифрованом виде'
+    created: 'Пользователь успешно создан!'
+    updated: 'Пользователь успешно обновлен!'
+    deleted: 'Пользователь удален!'
+    is_not_deleted: 'Возникла ошибка при удалении пользователя'
+  activerecord:
+    attributes:
+      user:
+        email: 'Электронная почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        role: 'Роль'
+
 

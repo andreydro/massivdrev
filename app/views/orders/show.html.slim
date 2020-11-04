@@ -1,0 +1,29 @@
+.form_container
+  div.form-group
+    .field-label.control-label
+      = I18n.t('orders.id')
+    .field.form-control
+      = @order.id
+  div.form-group
+    .field-label.control-label
+      = I18n.t('orders.title')
+    .field.form-control
+      = @order.title
+  div.form-group
+    .field-label
+      = I18n.t('orders.customer_info')
+    .field.form-control
+      = @order.customer_info
+  div.form-group
+    .field-label
+      = I18n.t('orders.order_info')
+    .field.form-control
+      = @order.order_info
+  div.form-group
+    .field-label
+      = I18n.t('packages.main_title')
+    .field
+      - @order.packages.each do |package|
+        .package-block
+          = link_to "Идентификатор: #{package.id}, Размер #{package.size} ", package_path(package), class: 'btn btn-info'
+

@@ -3,7 +3,7 @@
 # class for Packages Controller
 class PackagesController < ApplicationController
   def index
-    @packages = Package.all
+    @packages = Package.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -53,7 +53,7 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    params.require(:package).permit(:size, :info, :order_id)
+    params.require(:package).permit(:size, :info, :order_id, :status)
   end
 
   def create_qr_code(package)

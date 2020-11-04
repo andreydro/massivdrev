@@ -8,7 +8,7 @@
         th = I18n.t('packages.id')
         th = I18n.t('packages.order_id')
         th = I18n.t('packages.size')
-        th = I18n.t('packages.info')
+        th = I18n.t('packages.status')
         th = I18n.t('packages.created_at')
     tbody
     - @packages.each do |package|
@@ -20,12 +20,15 @@
         th
           = package.size
         th
-          = package.info
+          = package_statuses_ru[package.status.to_sym]
         th
           = package.created_at.strftime("%F %T")
         th
           = link_to I18n.t('buttons.show'), package_path(package), class: 'btn btn-info'
         th
           = link_to I18n.t('buttons.edit'), edit_package_path(package), class: 'btn btn-primary'
-        th
-          = link_to I18n.t('buttons.delete'), package_path(package), method: :delete, class: 'btn btn-danger'
+        - if user_superadmin?
+          th
+            = link_to I18n.t('buttons.delete'), package_path(package), method: :delete, class: 'btn btn-danger'
+
+  = will_paginate previous_label: I18n.t('buttons.previous_label'), next_label: I18n.t('buttons.next_label')

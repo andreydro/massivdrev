@@ -1,0 +1,21 @@
+.form_container
+  div.form-group
+    .field-label.control-label
+      = I18n.t('users.email')
+    .field.form-control
+      = @user.email
+  div.form-group
+    .field-label.control-label
+      = I18n.t('users.role')
+    .field.form-control
+      = @user.role
+  div.form-group
+    .field-label
+      = I18n.t('users.password')
+    .field.form-control
+      = I18n.t('users.password_encrypted')
+  div.form-group
+    .field-label
+      = I18n.t('users.created_at')
+    .field.form-control
+      = @user.created_at.strftime("%F %T")

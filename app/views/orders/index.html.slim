@@ -24,6 +24,11 @@
         th
           = order.created_at.strftime("%F %T")
         th
-          = link_to I18n.t('buttons.edit'), edit_order_path(order), class: 'btn btn-primary'
+          = link_to I18n.t('buttons.show'), order_path(order), class: 'btn btn-info'
         th
-          = link_to I18n.t('buttons.delete'), order_path(order), method: :delete, class: 'btn btn-danger'
+          = link_to I18n.t('buttons.edit'), edit_order_path(order), class: 'btn btn-primary'
+        - if user_superadmin?
+          th
+            = link_to I18n.t('buttons.delete'), order_path(order), method: :delete, class: 'btn btn-danger'
+
+  = will_paginate previous_label: I18n.t('buttons.previous_label'), next_label: I18n.t('buttons.next_label')

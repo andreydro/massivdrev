@@ -1,0 +1,7 @@
+= simple_form_for @user do |f|
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :role, collection: [['Админ', 'admin'],['Супер админ', 'superadmin']]
+
+  = f.button :submit, I18n.t('users.update'), class: 'btn btn-primary submit-button'

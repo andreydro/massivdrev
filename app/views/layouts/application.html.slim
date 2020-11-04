@@ -9,8 +9,11 @@ html
     / = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .container
-      = render partial: 'shared/header'
+      - if user_signed_in?
+        = render partial: 'shared/header'
       = render 'shared/error_messages'
       = yield
+      / - else
+      /   = render 'device/sessions/new'
 
   = javascript_include_tag 'application'

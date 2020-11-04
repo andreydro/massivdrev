@@ -14,8 +14,8 @@ class QrCodeCreator
 
   def attach_blob(qr_code)
     blob = ActiveStorage::Blob.create_after_upload!(
-      io: StringIO.new((Base64.decode64(png.to_data_url))),
-      filename: "#{@host}/packages/#{@package.id}.png",
+      io: StringIO.new(Base64.decode64(png.to_data_url.split(',')[1])),
+      filename: "#{@host}-package-#{@package.id}.png",
       content_type: 'image/png'
     )
 

@@ -2,5 +2,6 @@
   = simple_form_for @package do |f|
     = f.input :size
     = f.input :info
+    = f.input :status, collection: package_statuses
     = f.association :order
     = f.button :submit, I18n.t('packages.create'), class: 'btn btn-primary submit-button'
