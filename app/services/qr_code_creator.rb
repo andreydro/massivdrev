@@ -37,7 +37,7 @@ class QrCodeCreator
       module_px_size: 6,
       resize_exactly_to: false,
       resize_gte_to: false,
-      size: 120
+      size: 320
     )
   end
 
