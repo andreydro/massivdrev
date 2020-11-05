@@ -14,14 +14,14 @@
         = f.select :status_eq, package_statuses.unshift(['',''])
 
       .orders-search
-        label Создано после
+        label = I18n.t('orders.created_at_gteq')
         = f.search_field :created_at_gteq, id: 'order_created_at_gt'
         span.input-group-addon
           i.fa.fa-calendar
 
-        label Создано до
+        label = I18n.t('orders.created_at_lteq')
         = f.search_field :created_at_lteq, id: 'order_created_at_lt'
         span.input-group-addon
           i.fa.fa-calendar
 
-        = f.submit 'Искать'
+        = f.submit I18n.t('buttons.search')

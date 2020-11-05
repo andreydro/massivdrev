@@ -22,7 +22,6 @@ class PackagesController < ApplicationController
     if @package.save && create_qr_code(@package)
       redirect_to packages_path, notice: I18n.t('packages.created')
     else
-      # flash[:error] = I18n.t('packages.is_not_created')
       render 'new'
     end
   end

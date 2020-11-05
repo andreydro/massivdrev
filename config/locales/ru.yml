@@ -9,6 +9,7 @@ ru:
     remember_me: 'Запомнить меня'
     previous_label: 'Предыдущая страница'
     next_label: 'Следующая страница'
+    search: 'Искать'
   packages:
     main_title: 'Паллеты'
     create: 'Создать паллет'
@@ -41,6 +42,8 @@ ru:
     is_not_deleted: 'Возникла ошибка при удалении заказа'
     user: 'Пользователь, который создал заказ'
     status: 'Статус'
+    created_at_gteq: 'Создано после'
+    created_at_lteq: 'Создано до'
   qr_codes:
     main_title: 'QR коды'
     quote: 'Если на вашем телефоне нет QR code ридера, то файл можно фото QR кода можно загрузить сюда'
