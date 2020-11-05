@@ -3,7 +3,8 @@
 # class for Packages Controller
 class PackagesController < ApplicationController
   def index
-    @packages = Package.paginate(page: params[:page], per_page: 10)
+    @q = Package.all.ransack(params[:q])
+    @packages = @q.result.order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def show

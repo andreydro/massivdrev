@@ -2,4 +2,5 @@
   = f.input :title
   = f.input :customer_info
   = f.input :order_info
-  = f.button :submit
+  = f.input :status, collection: order_statuses
+  = f.button :submit, I18n.t('orders.update'), class: 'btn btn-primary submit-button'

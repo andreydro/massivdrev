@@ -30,4 +30,7 @@
     .field
       = image_tag @package.qr_code.public_image_url
       = link_to @package.qr_code.image.filename, rails_blob_path(@package.qr_code.image, disposition: 'attachment')
+  .form-group
+    .field
+      = link_to I18n.t('packages.update'), edit_package_path(@package), class: 'btn btn-primary'
 

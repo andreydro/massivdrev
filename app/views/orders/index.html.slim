@@ -1,6 +1,9 @@
 .orders-container
+
   .creation-bnt
     = link_to I18n.t('orders.create'), new_order_path, class: 'btn btn-info'
+
+  = render partial: 'orders/search_form'
 
   table.table
     thead
@@ -8,7 +11,7 @@
         th = I18n.t('orders.id')
         th = I18n.t('orders.title')
         th = I18n.t('orders.customer_info')
-        th = I18n.t('orders.order_info')
+        th = I18n.t('orders.status')
         th = I18n.t('orders.created_at')
     tbody
     - @orders.each do |order|
@@ -20,7 +23,7 @@
         th
           = order.customer_info
         th
-          = order.order_info
+          = order_statuses_ru[order.status.to_sym]
         th
           = order.created_at.strftime("%F %T")
         th

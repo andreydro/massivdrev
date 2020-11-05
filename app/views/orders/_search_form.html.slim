@@ -1,0 +1,27 @@
+  .seach-container
+    = search_form_for @q, url: orders_path, builder: SimpleForm::FormBuilder do |f|
+      .orders-search
+        label = I18n.t('orders.id')
+        = f.search_field :id_cont
+
+        label = I18n.t('orders.title')
+        = f.search_field :title_cont
+
+        label = I18n.t('orders.customer_info')
+        = f.search_field :customer_info_cont
+
+      .orders-search
+        label = I18n.t('orders.status')
+        = f.select :status_eq, order_statuses.unshift(['',''])
+
+        label Создано после
+        = f.search_field :created_at_gteq, id: 'order_created_at_gt'
+        span.input-group-addon
+          i.fa.fa-calendar
+
+        label Создано до
+        = f.search_field :created_at_lteq, id: 'order_created_at_lt'
+        span.input-group-addon
+          i.fa.fa-calendar
+
+        = f.submit 'Искать'

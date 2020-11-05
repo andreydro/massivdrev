@@ -1,13 +1,9 @@
 
 $( document ).ready(function() {
-  console.log( "ready!" );
-//   var packageHtml = document.getElementById('add-package').getAttribute('data-association-insertion-template')
-// document.getElementById('add-package').innerHTML += packageHtml
-  // $('#add-pachage-btn').click(function(elem) {
-  //   var packageHtml = elem.attr('data-association-insertion-template')
-  //   console.log(packageHtml)
-  //   // $('#new_order').innerHtml +=  packageHtml
-  // })
+  var order_created_at_lt = document.getElementById('order_created_at_lt');
+  var order_created_at_gt = document.getElementById('order_created_at_gt');
+  flatpickr(order_created_at_lt);
+  flatpickr(order_created_at_gt);
 });
 
 

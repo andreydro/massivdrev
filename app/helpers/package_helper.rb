@@ -9,4 +9,15 @@ module PackageHelper
       shipment: 'Отгрузка'
     }
   end
+
+  def package_statuses
+    [
+      ['Цех оцилиндровки', 'cylindering_shop'],
+      ['Промежуточный склад', 'intermediate_warehouse'],
+      ['Сушка', 'drying'],
+      ['Пропитка', 'impregnation'],
+      ['Склад готовой продукции', 'finished_goods_warehouse'],
+      ['Отгрузка', 'shipment']
+    ]
+  end
 end

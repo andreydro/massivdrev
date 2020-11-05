@@ -1,29 +1,43 @@
 .form_container
-  div.form-group
+  .form-group
     .field-label.control-label
       = I18n.t('orders.id')
     .field.form-control
       = @order.id
-  div.form-group
+  .form-group
     .field-label.control-label
       = I18n.t('orders.title')
     .field.form-control
       = @order.title
-  div.form-group
+  .form-group
     .field-label
       = I18n.t('orders.customer_info')
     .field.form-control
       = @order.customer_info
-  div.form-group
+  .form-group
     .field-label
       = I18n.t('orders.order_info')
     .field.form-control
       = @order.order_info
-  div.form-group
+  .form-group
     .field-label
-      = I18n.t('packages.main_title')
+      = I18n.t('orders.status')
+    .field.form-control
+      = order_statuses_ru[@order.status.to_sym]
+  .form-group
+    .field-label
+      = I18n.t('orders.user')
+    .field.form-control
+      = @order.user.email
+  - if @order.packages.present?
+    .form-group
+      .field-label
+        = I18n.t('packages.main_title')
+      .field
+        - @order.packages.each do |package|
+          .package-block
+            = link_to "Идентификатор: #{package.id}, Размер #{package.size} ", package_path(package), class: 'btn btn-info'
+  .form-group
     .field
-      - @order.packages.each do |package|
-        .package-block
-          = link_to "Идентификатор: #{package.id}, Размер #{package.size} ", package_path(package), class: 'btn btn-info'
+      = link_to I18n.t('orders.update'), edit_order_path(@order), class: 'btn btn-primary'
 

@@ -3,6 +3,8 @@
     = f.input :title
     = f.input :customer_info
     = f.input :order_info
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+    = f.input :status, as: :hidden, input_html: { value: 'active' }
     / = f.simple_fields_for :packages do |package|
     /   = render partial: 'orders/package_fields', f: package
     / = link_to_add_association 'Add package', f, :packages, id: 'add-package-btn'

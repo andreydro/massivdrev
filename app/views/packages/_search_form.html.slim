@@ -1,0 +1,27 @@
+  .seach-container
+    = search_form_for @q, url: packages_path, builder: SimpleForm::FormBuilder do |f|
+      .orders-search
+        label = I18n.t('packages.id')
+        = f.search_field :id_cont
+
+        label = I18n.t('packages.order_id')
+        = f.search_field :order_id_cont
+
+        label = I18n.t('packages.size')
+        = f.search_field :size_cont
+
+        label = I18n.t('orders.status')
+        = f.select :status_eq, package_statuses.unshift(['',''])
+
+      .orders-search
+        label Создано после
+        = f.search_field :created_at_gteq, id: 'order_created_at_gt'
+        span.input-group-addon
+          i.fa.fa-calendar
+
+        label Создано до
+        = f.search_field :created_at_lteq, id: 'order_created_at_lt'
+        span.input-group-addon
+          i.fa.fa-calendar
+
+        = f.submit 'Искать'

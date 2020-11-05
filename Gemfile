@@ -26,6 +26,9 @@ gem "cocoon"
 gem 'rails-i18n', '~> 6.0.0'
 gem 'devise'
 gem 'will_paginate'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'flatpickr_rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

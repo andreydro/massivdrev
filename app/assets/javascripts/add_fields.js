@@ -1,5 +1,4 @@
 // app/javascript/packs/nested-forms/addFields.js
-console.log('add field')
 class addFields {
   // This executes when the function is instantiated.
   constructor() {

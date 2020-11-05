@@ -1,5 +1,4 @@
 // app/javascript/packs/nested-forms/removeFields.js
-console.log('remove field')
 class removeFields {
   // This executes when the function is instantiated.
   constructor() {

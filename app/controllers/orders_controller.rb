@@ -3,7 +3,8 @@
 # class for Orders Controller
 class OrdersController < ApplicationController
   def index
-    @orders = Order.paginate(page: params[:page], per_page: 10)
+    @q = Order.all.ransack(params[:q])
+    @orders = @q.result.order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -51,7 +52,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:title, :customer_info, :order_info,
+    params.require(:order).permit(:title, :customer_info, :order_info, :user_id, :status,
                                   packages_attributes: %i[id size info order_id _destroy])
   end
 end
