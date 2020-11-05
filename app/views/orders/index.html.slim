@@ -23,7 +23,7 @@
         th
           = order.customer_info
         th
-          = order_statuses_ru[order.status.to_sym]
+          = order_statuses_ru[order.status.try(:to_sym)]
         th
           = order.created_at.strftime("%F %T")
         th
